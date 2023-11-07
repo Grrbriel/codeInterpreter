@@ -6,7 +6,7 @@ root = tk.Tk()
 root.title('Tkinter Window Demo')
 root.mainloop()
 
-print ("EU amo pizza!")
+print ("!")
 
 
 ###ANALISADOR LEXICO
