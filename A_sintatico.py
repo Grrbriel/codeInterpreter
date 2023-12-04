@@ -1,11 +1,9 @@
-# Yacc example
-
 import ply.yacc as yacc
 from A_lexico import tokens
 
-def p_draw(p):
+def p_draw_conn(p):
     '''
-    draw : DRAW SQUARE
+    draw_conn : DRAW SQUARE
         | DRAW SQUARE SIZE EQUAL NUMBER
         | DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN
         | DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
@@ -17,12 +15,42 @@ def p_draw(p):
         | DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
         | DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN
         | DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+        | CONNECT conn AND conn
+        | CONNECT conn AND conn AND conn
+        | CONNECT conn AND conn AND conn AND conn
+        | CONNECT conn AND conn AND conn AND conn AND conn
+        | CONNECT conn AND conn AND conn AND conn AND conn AND conn
+        | CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn
+        | CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+        | CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+        | CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
     '''
-    if p[2] == "square":
+
+    if p[1] == "connect":
+        for x in range(len(p.slice)):
+            if type(p[x]) == list:
+                if(p[0] is None):
+                    p[0] = p[x]
+                else:
+                    p[0] = p[0] + p[x]
+
+    elif p[2] == "square":
         p[0] = p_SQUARE(p)
 
     elif p[2] == "circle":
         p[0] = p_CIRCLE(p)
+
+    elif p[2] == "rectangle":
+        p[0] = p_RECTANGLE(p)
+
+def p_conn(p):
+    '''
+    conn : POINT LPAREN NUMBER COMMA NUMBER RPAREN
+    '''
+    x = [[p[3], p[5]]]
+    p[0] = x
+
+
 
 def p_SQUARE(p): #Padrão para o front: [FORMA, INT TAMANHO / TUPLA HEIGHT-WEIGHT, TUPLA START]
     '''
@@ -57,6 +85,24 @@ def p_CIRCLE(p):
 
     else: #circulo padrão
         p[0] = ['circle', 5, (0, 0)]
+
+    return p[0]
+
+def p_RECTANGLE(p):
+    '''
+    rect : RECTANGLE
+    '''
+    if len(p.slice) == 6: #retangulo com tamanho
+        p[0] = [p[2], p[5], (0, 0)]
+
+    elif len(p.slice) == 9: #retangulo com start point
+        p[0] = [p[2], (2, 5), (p[5], p[7])]
+
+    elif len(p.slice) == 17: #retangulo com start point e tamanho
+        p[0] = [p[2], (p[12], p[16]), (p[5], p[7])]
+
+    else: #retangulo padrão
+        p[0] = ['rect', (2, 5), (0, 0)]
 
     return p[0]
 def raw_input(p):

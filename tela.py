@@ -7,9 +7,21 @@ import numpy as np                 # v 1.19.2
 import matplotlib.pyplot as plt    # v 3.3.2
 import matplotlib.patches as patches
 
+import A_lexico as lexi
+import A_sintatico as sint
+
 def ImprimeLexicoSintatico():
-    txtAnalisLexica.insert("end", 'TESTE AQUI 1 \nTESTE AQUI 1')
+
+    inputX = "draw square size = 10" #O conteudo escrito pelo usuario tem que vir pra essa variavel
+    lexi.set_input(inputX)
+    lexi.tokenizer()
+    lexOutput = lexi.get_lexOutput()
+
+    txtAnalisLexica.insert("end", lexOutput)
     txtSintatica.insert("end", 'TESTE AQUI 2 \nTESTE AQUI 2')
+
+    #Gera toda a análise sintática
+    sint.sint(inputX)
 
     #MontaPlanoCartesiano()
     PlanoCartesianoMatPlotLib()
@@ -120,25 +132,25 @@ def PlanoCartesianoMatPlotLib():
     #y = r * np.sin(theta)
     #plt.plot(x,y)
     #SegundaForma
-    #circulo = plt.Circle((1, 1), 2)
-    #ax.set_aspect(1)
-    #ax.add_artist(circulo)
+    circulo = plt.Circle((1, 1), 2)
+    ax.set_aspect(1)
+    ax.add_artist(circulo)
 
     #--R E T A N G U L O--
     #https://www.delftstack.com/pt/howto/matplotlib/how-to-draw-rectangle-on-image-in-matplotlib/
-    #a = patches.Rectangle((1, 1), 1, 2, edgecolor="blue", facecolor="blue", fill=True)
-    #ax.add_patch(a)
+    a = patches.Rectangle((1, 1), 1, 2, edgecolor="blue", facecolor="blue", fill=True)
+    ax.add_patch(a)
 
     plt.show()
 
 #--F R M  P R I N C I P A L--
-#frm = ttk.Window(themename='darkly')
-frm = ttk.Window(themename='journal')
+frm = ttk.Window(themename='darkly')
+#frm = ttk.Window(themename='journal')
 frm.geometry('1000x600')
-frm.title("Janela")
+frm.title("Interpretador")
 
 #--I N P U T--
-label = ttk.Label(master=frm, text='Enunciado:', font='Calibri 15')
+label = ttk.Label(master=frm, text='Input:', font='Calibri 15')
 label.pack()
 label.place(x=5, y=10)
 
