@@ -7,8 +7,7 @@ tokens = [
        'RPAREN', #)
        'COMMA',  #,
        'EQUAL',  #=
-       'WORDS'   #Palavras reservadas e verificação de violação
-]
+       'WORDS']   #Palavras reservadas e verificação de violação
 
 reserved = {'connect':'CONNECT', #conectar pontos no plano
              'draw':'DRAW', #desenhar forma especificada
@@ -20,6 +19,7 @@ reserved = {'connect':'CONNECT', #conectar pontos no plano
              'weight':'WEIGHT', #especificar largura
              'point':'POINT',#especificar ponto no plano
              'AND':'AND', #condicao AND
+             'circle':'CIRCLE', #especificar forma
              'start':'START'} #especificar ponto inicial de figura
 
 tokens = tokens + list(reserved.values())
@@ -64,15 +64,27 @@ lexer = lex.lex()
 
 #String teste simulando input do usuário
 input = 'SQUARE connect point(1,1) AND point(2,2) AND point(3,3)\ndraw SQUARE s draw square size = 10 start(4,5)'
-
+input = ''
+def set_input(inputX):
+    input = inputX
+    lexer.input(input)
 
 #INPUT para o analisador
-lexer.input(input)
+#lexer.input(input)
 
-#TOKENIZACAO
-while True: #PRINT (TYPE, VALUE, LINE_NUMBER, POSITION_IN_STRING)
-    current_token = lexer.token()
-    if not current_token:
-        break      #Fim input
-    print(current_token)
+
+lexOutput = []
+def get_lexOutput():
+    return lexOutput
+
+
+def tokenizer():
+    #TOKENIZACAO
+    while True: #PRINT (TYPE, VALUE, LINE_NUMBER, POSITION_IN_STRING)
+        current_token = lexer.token()
+        if not current_token:
+            break      #Fim input
+        #print(current_token)
+        lexOutput.append(current_token)
+
 

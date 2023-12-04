@@ -1,29 +1,13 @@
-import tkinter as tk
-import ply.lex as lex
-import cProfile
+import A_lexico as lexi
+import A_sintatico as sint
 
-root = tk.Tk()
-root.title('Tkinter Window Demo')
-root.mainloop()
+inputX = input("input:")
 
-print ("!")
+lexi.set_input(inputX)
+lexi.tokenizer()
 
+lexOutput = lexi.get_lexOutput()
+print(lexOutput)
 
-###ANALISADOR LEXICO
-tokens = ['a_par', #(
-          'f_par', #)
-          'op_vir', #,
-          'op_igual', #=
-          'op_and', #AND
-          'op_eol'] #;
+sint.sint(inputX)
 
-reserverd = {'connect':'connect', #conectar pontos no plano
-             'draw':'draw', #desenhar forma especificada
-             'square':'square', #especificar forma
-             'triangle':'triangle', #especificar forma
-             'rectangle':'rectangle', #especificar forma
-             'size':'size', #especificar tamanho
-             'height':'height', #especificar altura
-             'weight':'weight', #especificar largura
-             'point':'point'} #especificar ponto no plano
-output = []
