@@ -1,0 +1,488 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CONNECT
+    POINT
+    TRIANGLE
+    WORDS
+
+Grammar
+
+Rule 0     S' -> draw
+Rule 1     draw -> DRAW SQUARE
+Rule 2     draw -> DRAW SQUARE SIZE EQUAL NUMBER
+Rule 3     draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 4     draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+Rule 5     draw -> DRAW CIRCLE
+Rule 6     draw -> DRAW CIRCLE SIZE EQUAL NUMBER
+Rule 7     draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 8     draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+Rule 9     draw -> DRAW RECTANGLE
+Rule 10    draw -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+Rule 11    draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 12    draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+Rule 13    square -> SQUARE
+Rule 14    circle -> CIRCLE
+
+Terminals, with rules where they appear
+
+AND                  : 4 8 10 12 12
+CIRCLE               : 5 6 7 8 14
+COMMA                : 3 4 7 8 11 12
+CONNECT              : 
+DRAW                 : 1 2 3 4 5 6 7 8 9 10 11 12
+EQUAL                : 2 4 6 8 10 10 12 12
+HEIGHT               : 10 12
+LPAREN               : 3 4 7 8 11 12
+NUMBER               : 2 3 3 4 4 4 6 7 7 8 8 8 10 10 11 11 12 12 12 12
+POINT                : 
+RECTANGLE            : 9 10 11 12
+RPAREN               : 3 4 7 8 11 12
+SIZE                 : 2 4 6 8
+SQUARE               : 1 2 3 4 13
+START                : 3 4 7 8 11 12
+TRIANGLE             : 
+WEIGHT               : 10 12
+WORDS                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+circle               : 
+draw                 : 0
+square               : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . draw
+    (1) draw -> . DRAW SQUARE
+    (2) draw -> . DRAW SQUARE SIZE EQUAL NUMBER
+    (3) draw -> . DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw -> . DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (5) draw -> . DRAW CIRCLE
+    (6) draw -> . DRAW CIRCLE SIZE EQUAL NUMBER
+    (7) draw -> . DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw -> . DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (9) draw -> . DRAW RECTANGLE
+    (10) draw -> . DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+    (11) draw -> . DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw -> . DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    DRAW            shift and go to state 2
+
+    draw                           shift and go to state 1
+
+state 1
+
+    (0) S' -> draw .
+
+
+
+state 2
+
+    (1) draw -> DRAW . SQUARE
+    (2) draw -> DRAW . SQUARE SIZE EQUAL NUMBER
+    (3) draw -> DRAW . SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw -> DRAW . SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (5) draw -> DRAW . CIRCLE
+    (6) draw -> DRAW . CIRCLE SIZE EQUAL NUMBER
+    (7) draw -> DRAW . CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw -> DRAW . CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (9) draw -> DRAW . RECTANGLE
+    (10) draw -> DRAW . RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+    (11) draw -> DRAW . RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw -> DRAW . RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    SQUARE          shift and go to state 3
+    CIRCLE          shift and go to state 4
+    RECTANGLE       shift and go to state 5
+
+
+state 3
+
+    (1) draw -> DRAW SQUARE .
+    (2) draw -> DRAW SQUARE . SIZE EQUAL NUMBER
+    (3) draw -> DRAW SQUARE . START LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw -> DRAW SQUARE . START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 1 (draw -> DRAW SQUARE .)
+    SIZE            shift and go to state 6
+    START           shift and go to state 7
+
+
+state 4
+
+    (5) draw -> DRAW CIRCLE .
+    (6) draw -> DRAW CIRCLE . SIZE EQUAL NUMBER
+    (7) draw -> DRAW CIRCLE . START LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw -> DRAW CIRCLE . START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 5 (draw -> DRAW CIRCLE .)
+    SIZE            shift and go to state 8
+    START           shift and go to state 9
+
+
+state 5
+
+    (9) draw -> DRAW RECTANGLE .
+    (10) draw -> DRAW RECTANGLE . HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+    (11) draw -> DRAW RECTANGLE . START LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw -> DRAW RECTANGLE . START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    $end            reduce using rule 9 (draw -> DRAW RECTANGLE .)
+    HEIGHT          shift and go to state 10
+    START           shift and go to state 11
+
+
+state 6
+
+    (2) draw -> DRAW SQUARE SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 12
+
+
+state 7
+
+    (3) draw -> DRAW SQUARE START . LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw -> DRAW SQUARE START . LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    LPAREN          shift and go to state 13
+
+
+state 8
+
+    (6) draw -> DRAW CIRCLE SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 14
+
+
+state 9
+
+    (7) draw -> DRAW CIRCLE START . LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw -> DRAW CIRCLE START . LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    LPAREN          shift and go to state 15
+
+
+state 10
+
+    (10) draw -> DRAW RECTANGLE HEIGHT . EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    EQUAL           shift and go to state 16
+
+
+state 11
+
+    (11) draw -> DRAW RECTANGLE START . LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw -> DRAW RECTANGLE START . LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    LPAREN          shift and go to state 17
+
+
+state 12
+
+    (2) draw -> DRAW SQUARE SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 18
+
+
+state 13
+
+    (3) draw -> DRAW SQUARE START LPAREN . NUMBER COMMA NUMBER RPAREN
+    (4) draw -> DRAW SQUARE START LPAREN . NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 19
+
+
+state 14
+
+    (6) draw -> DRAW CIRCLE SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 20
+
+
+state 15
+
+    (7) draw -> DRAW CIRCLE START LPAREN . NUMBER COMMA NUMBER RPAREN
+    (8) draw -> DRAW CIRCLE START LPAREN . NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 21
+
+
+state 16
+
+    (10) draw -> DRAW RECTANGLE HEIGHT EQUAL . NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 22
+
+
+state 17
+
+    (11) draw -> DRAW RECTANGLE START LPAREN . NUMBER COMMA NUMBER RPAREN
+    (12) draw -> DRAW RECTANGLE START LPAREN . NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 23
+
+
+state 18
+
+    (2) draw -> DRAW SQUARE SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 2 (draw -> DRAW SQUARE SIZE EQUAL NUMBER .)
+
+
+state 19
+
+    (3) draw -> DRAW SQUARE START LPAREN NUMBER . COMMA NUMBER RPAREN
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER . COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    COMMA           shift and go to state 24
+
+
+state 20
+
+    (6) draw -> DRAW CIRCLE SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 6 (draw -> DRAW CIRCLE SIZE EQUAL NUMBER .)
+
+
+state 21
+
+    (7) draw -> DRAW CIRCLE START LPAREN NUMBER . COMMA NUMBER RPAREN
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER . COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    COMMA           shift and go to state 25
+
+
+state 22
+
+    (10) draw -> DRAW RECTANGLE HEIGHT EQUAL NUMBER . AND WEIGHT EQUAL NUMBER
+
+    AND             shift and go to state 26
+
+
+state 23
+
+    (11) draw -> DRAW RECTANGLE START LPAREN NUMBER . COMMA NUMBER RPAREN
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER . COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    COMMA           shift and go to state 27
+
+
+state 24
+
+    (3) draw -> DRAW SQUARE START LPAREN NUMBER COMMA . NUMBER RPAREN
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER COMMA . NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 28
+
+
+state 25
+
+    (7) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA . NUMBER RPAREN
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA . NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 29
+
+
+state 26
+
+    (10) draw -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND . WEIGHT EQUAL NUMBER
+
+    WEIGHT          shift and go to state 30
+
+
+state 27
+
+    (11) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA . NUMBER RPAREN
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA . NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 31
+
+
+state 28
+
+    (3) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER . RPAREN
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER . RPAREN AND SIZE EQUAL NUMBER
+
+    RPAREN          shift and go to state 32
+
+
+state 29
+
+    (7) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER . RPAREN
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER . RPAREN AND SIZE EQUAL NUMBER
+
+    RPAREN          shift and go to state 33
+
+
+state 30
+
+    (10) draw -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT . EQUAL NUMBER
+
+    EQUAL           shift and go to state 34
+
+
+state 31
+
+    (11) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER . RPAREN
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER . RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    RPAREN          shift and go to state 35
+
+
+state 32
+
+    (3) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN .
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN . AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 3 (draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN .)
+    AND             shift and go to state 36
+
+
+state 33
+
+    (7) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN .
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN . AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 7 (draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN .)
+    AND             shift and go to state 37
+
+
+state 34
+
+    (10) draw -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL . NUMBER
+
+    NUMBER          shift and go to state 38
+
+
+state 35
+
+    (11) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN .
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN . AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    $end            reduce using rule 11 (draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN .)
+    AND             shift and go to state 39
+
+
+state 36
+
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND . SIZE EQUAL NUMBER
+
+    SIZE            shift and go to state 40
+
+
+state 37
+
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND . SIZE EQUAL NUMBER
+
+    SIZE            shift and go to state 41
+
+
+state 38
+
+    (10) draw -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .
+
+    $end            reduce using rule 10 (draw -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .)
+
+
+state 39
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND . HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    HEIGHT          shift and go to state 42
+
+
+state 40
+
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 43
+
+
+state 41
+
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 44
+
+
+state 42
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT . EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    EQUAL           shift and go to state 45
+
+
+state 43
+
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 46
+
+
+state 44
+
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 47
+
+
+state 45
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL . NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 48
+
+
+state 46
+
+    (4) draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 4 (draw -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .)
+
+
+state 47
+
+    (8) draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 8 (draw -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .)
+
+
+state 48
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER . AND WEIGHT EQUAL NUMBER
+
+    AND             shift and go to state 49
+
+
+state 49
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND . WEIGHT EQUAL NUMBER
+
+    WEIGHT          shift and go to state 50
+
+
+state 50
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT . EQUAL NUMBER
+
+    EQUAL           shift and go to state 51
+
+
+state 51
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL . NUMBER
+
+    NUMBER          shift and go to state 52
+
+
+state 52
+
+    (12) draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .
+
+    $end            reduce using rule 12 (draw -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .)
+
