@@ -1,0 +1,808 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    TRIANGLE
+    WORDS
+
+Grammar
+
+Rule 0     S' -> draw_conn
+Rule 1     draw_conn -> DRAW SQUARE
+Rule 2     draw_conn -> DRAW SQUARE SIZE EQUAL NUMBER
+Rule 3     draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 4     draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+Rule 5     draw_conn -> DRAW CIRCLE
+Rule 6     draw_conn -> DRAW CIRCLE SIZE EQUAL NUMBER
+Rule 7     draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 8     draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+Rule 9     draw_conn -> DRAW RECTANGLE
+Rule 10    draw_conn -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+Rule 11    draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 12    draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+Rule 13    draw_conn -> CONNECT conn AND conn
+Rule 14    draw_conn -> CONNECT conn AND conn AND conn
+Rule 15    draw_conn -> CONNECT conn AND conn AND conn AND conn
+Rule 16    draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn
+Rule 17    draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn
+Rule 18    draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn
+Rule 19    draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+Rule 20    draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+Rule 21    draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+Rule 22    conn -> POINT LPAREN NUMBER COMMA NUMBER RPAREN
+Rule 23    square -> SQUARE
+Rule 24    circle -> CIRCLE
+Rule 25    rect -> RECTANGLE
+
+Terminals, with rules where they appear
+
+AND                  : 4 8 10 12 12 13 14 14 15 15 15 16 16 16 16 17 17 17 17 17 18 18 18 18 18 18 19 19 19 19 19 19 19 20 20 20 20 20 20 20 20 21 21 21 21 21 21 21 21 21
+CIRCLE               : 5 6 7 8 24
+COMMA                : 3 4 7 8 11 12 22
+CONNECT              : 13 14 15 16 17 18 19 20 21
+DRAW                 : 1 2 3 4 5 6 7 8 9 10 11 12
+EQUAL                : 2 4 6 8 10 10 12 12
+HEIGHT               : 10 12
+LPAREN               : 3 4 7 8 11 12 22
+NUMBER               : 2 3 3 4 4 4 6 7 7 8 8 8 10 10 11 11 12 12 12 12 22 22
+POINT                : 22
+RECTANGLE            : 9 10 11 12 25
+RPAREN               : 3 4 7 8 11 12 22
+SIZE                 : 2 4 6 8
+SQUARE               : 1 2 3 4 23
+START                : 3 4 7 8 11 12
+TRIANGLE             : 
+WEIGHT               : 10 12
+WORDS                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+circle               : 
+conn                 : 13 13 14 14 14 15 15 15 15 16 16 16 16 16 17 17 17 17 17 17 18 18 18 18 18 18 18 19 19 19 19 19 19 19 19 20 20 20 20 20 20 20 20 20 21 21 21 21 21 21 21 21 21 21
+draw_conn            : 0
+rect                 : 
+square               : 
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . draw_conn
+    (1) draw_conn -> . DRAW SQUARE
+    (2) draw_conn -> . DRAW SQUARE SIZE EQUAL NUMBER
+    (3) draw_conn -> . DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw_conn -> . DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (5) draw_conn -> . DRAW CIRCLE
+    (6) draw_conn -> . DRAW CIRCLE SIZE EQUAL NUMBER
+    (7) draw_conn -> . DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw_conn -> . DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (9) draw_conn -> . DRAW RECTANGLE
+    (10) draw_conn -> . DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+    (11) draw_conn -> . DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw_conn -> . DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+    (13) draw_conn -> . CONNECT conn AND conn
+    (14) draw_conn -> . CONNECT conn AND conn AND conn
+    (15) draw_conn -> . CONNECT conn AND conn AND conn AND conn
+    (16) draw_conn -> . CONNECT conn AND conn AND conn AND conn AND conn
+    (17) draw_conn -> . CONNECT conn AND conn AND conn AND conn AND conn AND conn
+    (18) draw_conn -> . CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (19) draw_conn -> . CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> . CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> . CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+
+    DRAW            shift and go to state 2
+    CONNECT         shift and go to state 3
+
+    draw_conn                      shift and go to state 1
+
+state 1
+
+    (0) S' -> draw_conn .
+
+
+
+state 2
+
+    (1) draw_conn -> DRAW . SQUARE
+    (2) draw_conn -> DRAW . SQUARE SIZE EQUAL NUMBER
+    (3) draw_conn -> DRAW . SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw_conn -> DRAW . SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (5) draw_conn -> DRAW . CIRCLE
+    (6) draw_conn -> DRAW . CIRCLE SIZE EQUAL NUMBER
+    (7) draw_conn -> DRAW . CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw_conn -> DRAW . CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+    (9) draw_conn -> DRAW . RECTANGLE
+    (10) draw_conn -> DRAW . RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+    (11) draw_conn -> DRAW . RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw_conn -> DRAW . RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    SQUARE          shift and go to state 4
+    CIRCLE          shift and go to state 5
+    RECTANGLE       shift and go to state 6
+
+
+state 3
+
+    (13) draw_conn -> CONNECT . conn AND conn
+    (14) draw_conn -> CONNECT . conn AND conn AND conn
+    (15) draw_conn -> CONNECT . conn AND conn AND conn AND conn
+    (16) draw_conn -> CONNECT . conn AND conn AND conn AND conn AND conn
+    (17) draw_conn -> CONNECT . conn AND conn AND conn AND conn AND conn AND conn
+    (18) draw_conn -> CONNECT . conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT . conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT . conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT . conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 7
+
+state 4
+
+    (1) draw_conn -> DRAW SQUARE .
+    (2) draw_conn -> DRAW SQUARE . SIZE EQUAL NUMBER
+    (3) draw_conn -> DRAW SQUARE . START LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw_conn -> DRAW SQUARE . START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 1 (draw_conn -> DRAW SQUARE .)
+    SIZE            shift and go to state 9
+    START           shift and go to state 10
+
+
+state 5
+
+    (5) draw_conn -> DRAW CIRCLE .
+    (6) draw_conn -> DRAW CIRCLE . SIZE EQUAL NUMBER
+    (7) draw_conn -> DRAW CIRCLE . START LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw_conn -> DRAW CIRCLE . START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 5 (draw_conn -> DRAW CIRCLE .)
+    SIZE            shift and go to state 11
+    START           shift and go to state 12
+
+
+state 6
+
+    (9) draw_conn -> DRAW RECTANGLE .
+    (10) draw_conn -> DRAW RECTANGLE . HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+    (11) draw_conn -> DRAW RECTANGLE . START LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw_conn -> DRAW RECTANGLE . START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    $end            reduce using rule 9 (draw_conn -> DRAW RECTANGLE .)
+    HEIGHT          shift and go to state 13
+    START           shift and go to state 14
+
+
+state 7
+
+    (13) draw_conn -> CONNECT conn . AND conn
+    (14) draw_conn -> CONNECT conn . AND conn AND conn
+    (15) draw_conn -> CONNECT conn . AND conn AND conn AND conn
+    (16) draw_conn -> CONNECT conn . AND conn AND conn AND conn AND conn
+    (17) draw_conn -> CONNECT conn . AND conn AND conn AND conn AND conn AND conn
+    (18) draw_conn -> CONNECT conn . AND conn AND conn AND conn AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn . AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn . AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn . AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+
+    AND             shift and go to state 15
+
+
+state 8
+
+    (22) conn -> POINT . LPAREN NUMBER COMMA NUMBER RPAREN
+
+    LPAREN          shift and go to state 16
+
+
+state 9
+
+    (2) draw_conn -> DRAW SQUARE SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 17
+
+
+state 10
+
+    (3) draw_conn -> DRAW SQUARE START . LPAREN NUMBER COMMA NUMBER RPAREN
+    (4) draw_conn -> DRAW SQUARE START . LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    LPAREN          shift and go to state 18
+
+
+state 11
+
+    (6) draw_conn -> DRAW CIRCLE SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 19
+
+
+state 12
+
+    (7) draw_conn -> DRAW CIRCLE START . LPAREN NUMBER COMMA NUMBER RPAREN
+    (8) draw_conn -> DRAW CIRCLE START . LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    LPAREN          shift and go to state 20
+
+
+state 13
+
+    (10) draw_conn -> DRAW RECTANGLE HEIGHT . EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    EQUAL           shift and go to state 21
+
+
+state 14
+
+    (11) draw_conn -> DRAW RECTANGLE START . LPAREN NUMBER COMMA NUMBER RPAREN
+    (12) draw_conn -> DRAW RECTANGLE START . LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    LPAREN          shift and go to state 22
+
+
+state 15
+
+    (13) draw_conn -> CONNECT conn AND . conn
+    (14) draw_conn -> CONNECT conn AND . conn AND conn
+    (15) draw_conn -> CONNECT conn AND . conn AND conn AND conn
+    (16) draw_conn -> CONNECT conn AND . conn AND conn AND conn AND conn
+    (17) draw_conn -> CONNECT conn AND . conn AND conn AND conn AND conn AND conn
+    (18) draw_conn -> CONNECT conn AND . conn AND conn AND conn AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND . conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND . conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND . conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 23
+
+state 16
+
+    (22) conn -> POINT LPAREN . NUMBER COMMA NUMBER RPAREN
+
+    NUMBER          shift and go to state 24
+
+
+state 17
+
+    (2) draw_conn -> DRAW SQUARE SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 25
+
+
+state 18
+
+    (3) draw_conn -> DRAW SQUARE START LPAREN . NUMBER COMMA NUMBER RPAREN
+    (4) draw_conn -> DRAW SQUARE START LPAREN . NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 26
+
+
+state 19
+
+    (6) draw_conn -> DRAW CIRCLE SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 27
+
+
+state 20
+
+    (7) draw_conn -> DRAW CIRCLE START LPAREN . NUMBER COMMA NUMBER RPAREN
+    (8) draw_conn -> DRAW CIRCLE START LPAREN . NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 28
+
+
+state 21
+
+    (10) draw_conn -> DRAW RECTANGLE HEIGHT EQUAL . NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 29
+
+
+state 22
+
+    (11) draw_conn -> DRAW RECTANGLE START LPAREN . NUMBER COMMA NUMBER RPAREN
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN . NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 30
+
+
+state 23
+
+    (13) draw_conn -> CONNECT conn AND conn .
+    (14) draw_conn -> CONNECT conn AND conn . AND conn
+    (15) draw_conn -> CONNECT conn AND conn . AND conn AND conn
+    (16) draw_conn -> CONNECT conn AND conn . AND conn AND conn AND conn
+    (17) draw_conn -> CONNECT conn AND conn . AND conn AND conn AND conn AND conn
+    (18) draw_conn -> CONNECT conn AND conn . AND conn AND conn AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn . AND conn AND conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn . AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn . AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+
+    $end            reduce using rule 13 (draw_conn -> CONNECT conn AND conn .)
+    AND             shift and go to state 31
+
+
+state 24
+
+    (22) conn -> POINT LPAREN NUMBER . COMMA NUMBER RPAREN
+
+    COMMA           shift and go to state 32
+
+
+state 25
+
+    (2) draw_conn -> DRAW SQUARE SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 2 (draw_conn -> DRAW SQUARE SIZE EQUAL NUMBER .)
+
+
+state 26
+
+    (3) draw_conn -> DRAW SQUARE START LPAREN NUMBER . COMMA NUMBER RPAREN
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER . COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    COMMA           shift and go to state 33
+
+
+state 27
+
+    (6) draw_conn -> DRAW CIRCLE SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 6 (draw_conn -> DRAW CIRCLE SIZE EQUAL NUMBER .)
+
+
+state 28
+
+    (7) draw_conn -> DRAW CIRCLE START LPAREN NUMBER . COMMA NUMBER RPAREN
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER . COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    COMMA           shift and go to state 34
+
+
+state 29
+
+    (10) draw_conn -> DRAW RECTANGLE HEIGHT EQUAL NUMBER . AND WEIGHT EQUAL NUMBER
+
+    AND             shift and go to state 35
+
+
+state 30
+
+    (11) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER . COMMA NUMBER RPAREN
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER . COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    COMMA           shift and go to state 36
+
+
+state 31
+
+    (14) draw_conn -> CONNECT conn AND conn AND . conn
+    (15) draw_conn -> CONNECT conn AND conn AND . conn AND conn
+    (16) draw_conn -> CONNECT conn AND conn AND . conn AND conn AND conn
+    (17) draw_conn -> CONNECT conn AND conn AND . conn AND conn AND conn AND conn
+    (18) draw_conn -> CONNECT conn AND conn AND . conn AND conn AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND . conn AND conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND . conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND . conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 37
+
+state 32
+
+    (22) conn -> POINT LPAREN NUMBER COMMA . NUMBER RPAREN
+
+    NUMBER          shift and go to state 38
+
+
+state 33
+
+    (3) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA . NUMBER RPAREN
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA . NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 39
+
+
+state 34
+
+    (7) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA . NUMBER RPAREN
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA . NUMBER RPAREN AND SIZE EQUAL NUMBER
+
+    NUMBER          shift and go to state 40
+
+
+state 35
+
+    (10) draw_conn -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND . WEIGHT EQUAL NUMBER
+
+    WEIGHT          shift and go to state 41
+
+
+state 36
+
+    (11) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA . NUMBER RPAREN
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA . NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 42
+
+
+state 37
+
+    (14) draw_conn -> CONNECT conn AND conn AND conn .
+    (15) draw_conn -> CONNECT conn AND conn AND conn . AND conn
+    (16) draw_conn -> CONNECT conn AND conn AND conn . AND conn AND conn
+    (17) draw_conn -> CONNECT conn AND conn AND conn . AND conn AND conn AND conn
+    (18) draw_conn -> CONNECT conn AND conn AND conn . AND conn AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn . AND conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn . AND conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn . AND conn AND conn AND conn AND conn AND conn AND conn AND conn
+
+    $end            reduce using rule 14 (draw_conn -> CONNECT conn AND conn AND conn .)
+    AND             shift and go to state 43
+
+
+state 38
+
+    (22) conn -> POINT LPAREN NUMBER COMMA NUMBER . RPAREN
+
+    RPAREN          shift and go to state 44
+
+
+state 39
+
+    (3) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER . RPAREN
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER . RPAREN AND SIZE EQUAL NUMBER
+
+    RPAREN          shift and go to state 45
+
+
+state 40
+
+    (7) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER . RPAREN
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER . RPAREN AND SIZE EQUAL NUMBER
+
+    RPAREN          shift and go to state 46
+
+
+state 41
+
+    (10) draw_conn -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT . EQUAL NUMBER
+
+    EQUAL           shift and go to state 47
+
+
+state 42
+
+    (11) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER . RPAREN
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER . RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    RPAREN          shift and go to state 48
+
+
+state 43
+
+    (15) draw_conn -> CONNECT conn AND conn AND conn AND . conn
+    (16) draw_conn -> CONNECT conn AND conn AND conn AND . conn AND conn
+    (17) draw_conn -> CONNECT conn AND conn AND conn AND . conn AND conn AND conn
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND . conn AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND . conn AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND . conn AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND . conn AND conn AND conn AND conn AND conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 49
+
+state 44
+
+    (22) conn -> POINT LPAREN NUMBER COMMA NUMBER RPAREN .
+
+    AND             reduce using rule 22 (conn -> POINT LPAREN NUMBER COMMA NUMBER RPAREN .)
+    $end            reduce using rule 22 (conn -> POINT LPAREN NUMBER COMMA NUMBER RPAREN .)
+
+
+state 45
+
+    (3) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN .
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN . AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 3 (draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN .)
+    AND             shift and go to state 50
+
+
+state 46
+
+    (7) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN .
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN . AND SIZE EQUAL NUMBER
+
+    $end            reduce using rule 7 (draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN .)
+    AND             shift and go to state 51
+
+
+state 47
+
+    (10) draw_conn -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL . NUMBER
+
+    NUMBER          shift and go to state 52
+
+
+state 48
+
+    (11) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN .
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN . AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    $end            reduce using rule 11 (draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN .)
+    AND             shift and go to state 53
+
+
+state 49
+
+    (15) draw_conn -> CONNECT conn AND conn AND conn AND conn .
+    (16) draw_conn -> CONNECT conn AND conn AND conn AND conn . AND conn
+    (17) draw_conn -> CONNECT conn AND conn AND conn AND conn . AND conn AND conn
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND conn . AND conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn . AND conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn . AND conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn . AND conn AND conn AND conn AND conn AND conn AND conn
+
+    $end            reduce using rule 15 (draw_conn -> CONNECT conn AND conn AND conn AND conn .)
+    AND             shift and go to state 54
+
+
+state 50
+
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND . SIZE EQUAL NUMBER
+
+    SIZE            shift and go to state 55
+
+
+state 51
+
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND . SIZE EQUAL NUMBER
+
+    SIZE            shift and go to state 56
+
+
+state 52
+
+    (10) draw_conn -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .
+
+    $end            reduce using rule 10 (draw_conn -> DRAW RECTANGLE HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .)
+
+
+state 53
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND . HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    HEIGHT          shift and go to state 57
+
+
+state 54
+
+    (16) draw_conn -> CONNECT conn AND conn AND conn AND conn AND . conn
+    (17) draw_conn -> CONNECT conn AND conn AND conn AND conn AND . conn AND conn
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND conn AND . conn AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND . conn AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND . conn AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND . conn AND conn AND conn AND conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 58
+
+state 55
+
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 59
+
+
+state 56
+
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE . EQUAL NUMBER
+
+    EQUAL           shift and go to state 60
+
+
+state 57
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT . EQUAL NUMBER AND WEIGHT EQUAL NUMBER
+
+    EQUAL           shift and go to state 61
+
+
+state 58
+
+    (16) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn .
+    (17) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn . AND conn
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn . AND conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn . AND conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn . AND conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn . AND conn AND conn AND conn AND conn AND conn
+
+    $end            reduce using rule 16 (draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn .)
+    AND             shift and go to state 62
+
+
+state 59
+
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 63
+
+
+state 60
+
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL . NUMBER
+
+    NUMBER          shift and go to state 64
+
+
+state 61
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL . NUMBER AND WEIGHT EQUAL NUMBER
+
+    NUMBER          shift and go to state 65
+
+
+state 62
+
+    (17) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND . conn
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND . conn AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND . conn AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND . conn AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND . conn AND conn AND conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 66
+
+state 63
+
+    (4) draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 4 (draw_conn -> DRAW SQUARE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .)
+
+
+state 64
+
+    (8) draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .
+
+    $end            reduce using rule 8 (draw_conn -> DRAW CIRCLE START LPAREN NUMBER COMMA NUMBER RPAREN AND SIZE EQUAL NUMBER .)
+
+
+state 65
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER . AND WEIGHT EQUAL NUMBER
+
+    AND             shift and go to state 67
+
+
+state 66
+
+    (17) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn .
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn . AND conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn . AND conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn . AND conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn . AND conn AND conn AND conn AND conn
+
+    $end            reduce using rule 17 (draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn .)
+    AND             shift and go to state 68
+
+
+state 67
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND . WEIGHT EQUAL NUMBER
+
+    WEIGHT          shift and go to state 69
+
+
+state 68
+
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND . conn
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND . conn AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND . conn AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND . conn AND conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 70
+
+state 69
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT . EQUAL NUMBER
+
+    EQUAL           shift and go to state 71
+
+
+state 70
+
+    (18) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn .
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn . AND conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn . AND conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn . AND conn AND conn AND conn
+
+    $end            reduce using rule 18 (draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn .)
+    AND             shift and go to state 72
+
+
+state 71
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL . NUMBER
+
+    NUMBER          shift and go to state 73
+
+
+state 72
+
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND . conn
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND . conn AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND . conn AND conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 74
+
+state 73
+
+    (12) draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .
+
+    $end            reduce using rule 12 (draw_conn -> DRAW RECTANGLE START LPAREN NUMBER COMMA NUMBER RPAREN AND HEIGHT EQUAL NUMBER AND WEIGHT EQUAL NUMBER .)
+
+
+state 74
+
+    (19) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn .
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn . AND conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn . AND conn AND conn
+
+    $end            reduce using rule 19 (draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn .)
+    AND             shift and go to state 75
+
+
+state 75
+
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND . conn
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND . conn AND conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 76
+
+state 76
+
+    (20) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn .
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn . AND conn
+
+    $end            reduce using rule 20 (draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn .)
+    AND             shift and go to state 77
+
+
+state 77
+
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND . conn
+    (22) conn -> . POINT LPAREN NUMBER COMMA NUMBER RPAREN
+
+    POINT           shift and go to state 8
+
+    conn                           shift and go to state 78
+
+state 78
+
+    (21) draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn .
+
+    $end            reduce using rule 21 (draw_conn -> CONNECT conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn AND conn .)
+
