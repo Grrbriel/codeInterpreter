@@ -33,6 +33,7 @@ def p_draw_conn(p):
                     p[0] = p[x]
                 else:
                     p[0] = p[0] + p[x]
+        p[0] = ["connect"]+p[0]
 
     elif p[2] == "square":
         p[0] = p_SQUARE(p)
@@ -92,8 +93,8 @@ def p_RECTANGLE(p):
     '''
     rect : RECTANGLE
     '''
-    if len(p.slice) == 6: #retangulo com tamanho
-        p[0] = [p[2], p[5], (0, 0)]
+    if len(p.slice) == 10: #retangulo com tamanho
+        p[0] = [p[2], (p[5], p[9]), (0, 0)]
 
     elif len(p.slice) == 9: #retangulo com start point
         p[0] = [p[2], (2, 5), (p[5], p[7])]
@@ -102,7 +103,7 @@ def p_RECTANGLE(p):
         p[0] = [p[2], (p[12], p[16]), (p[5], p[7])]
 
     else: #retangulo padrão
-        p[0] = ['rect', (2, 5), (0, 0)]
+        p[0] = ['rectangle', (2, 5), (0, 0)]
 
     return p[0]
 def raw_input(p):

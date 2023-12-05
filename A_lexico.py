@@ -41,7 +41,8 @@ def t_WORDS(t):
 
 #REGEX de numero inteiro
 def t_NUMBER(t):
-    r'\d+'
+    #r'\d+'
+    r'\-?\d+'
     t.value = int(t.value)
     return t
 

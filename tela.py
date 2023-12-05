@@ -1,7 +1,5 @@
 import tkinter as tk
 import ttkbootstrap as ttk
-import cartesianPlane
-import pygame
 
 import numpy as np                 # v 1.19.2
 import matplotlib.pyplot as plt    # v 3.3.2
@@ -12,75 +10,40 @@ import A_sintatico as sint
 
 def ImprimeLexicoSintatico():
 
-    #inputX = "draw square size = 10" #O conteudo escrito pelo usuario tem que vir pra essa variavel
     inputX = entryString.get()
     lexi.set_input(inputX)
     lexi.tokenizer()
     lexOutput = lexi.get_lexOutput()
-    if lexOutput =="":
-        lexOutput = "Não foi possível analisar o input informado!\n"
 
+    if not lexOutput:
+        lexOutput.append("\nNão foi possível analisar o input informado!\n")
 
-    txtAnalisLexica.insert("end", lexOutput)
-    txtSintatica.insert("end", 'TESTE AQUI 2 \nTESTE AQUI 2')
+    for line in lexOutput:
+        txtAnalisLexica.insert("end", "\n" + str(line))
+
+    lexOutput.clear()
+    ####################### FIM LEX #######################
 
     #Gera toda a análise sintática
-    sint.sint(inputX)
+    sintOutput = sint.sint(inputX)
+    if sintOutput is None:
+        txtSintatica.insert("end", 'Falha sintática!\n')
+    else:
+        txtSintatica.insert("end", str(sintOutput)+'\n')
 
     #MontaPlanoCartesiano()
-    PlanoCartesianoMatPlotLib()
+    PlanoCartesianoMatPlotLib(sintOutput)
 
-def MontaPlanoCartesiano():
-    RED = (255, 0, 0)
-    GREEN = (0, 255, 0)
-    BLUE = (0, 0, 255)
-    YELLOW = (255, 255, 0)
-
-    # Set up the window
-    pygame.init()
-    screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption('Plano Cartesiano')
-
-    plane = cartesianPlane.CartesianPlane(screen)
-    #plane.zooming(10000)
-    #plane.scale(100)
-
-    circle = cartesianPlane.Circle(plane, RED, (0, 0), 10)
-    rect = cartesianPlane.Rect(plane, GREEN, [20, 10, 10, 10])
-    line = cartesianPlane.Line(plane, BLUE, [40, 0], [10, 10])
-    path = cartesianPlane.Path(plane, YELLOW, [0, 0], [10, 10], [20, 20])
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT or event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                pygame.quit()
-                quit()
-
-            plane.event_handling(event)
-
-        # Update the plane
-        plane.update()
-
-        cartesianPlane.draw.circle(plane, GREEN, (15, 15), 1)
-        cartesianPlane.draw.rect(plane, BLUE, (25, 25, 10, 10), 1)
-        cartesianPlane.draw.line(plane, YELLOW, (35, 35), (45, 45))
-
-        #clock.tick()
-
-        # Update the screen
-        pygame.display.update()
-
-def PlanoCartesianoMatPlotLib():
-
+def PlanoCartesianoMatPlotLib(sintOutput):
 
     # Select length of axes and the space between tick labels
-    xmin, xmax, ymin, ymax = -5, 5, -5, 5
+    xmin, xmax, ymin, ymax = -10, 10, -10, 10
     ticks_frequency = 1
 
     # Desenha os pontos
     fig, ax = plt.subplots(figsize=(10, 10))
 
-    # Defini escala para o plano
+    # Define escala para o plano
     ax.set(xlim=(xmin - 1, xmax + 1), ylim=(ymin - 1, ymax + 1), aspect='equal')
 
     # Define a posição 0,0 com centro do plano
@@ -114,39 +77,46 @@ def PlanoCartesianoMatPlotLib():
     ax.plot((1), (0), marker='>', transform=ax.get_yaxis_transform(), **arrow_fmt)
     ax.plot((0), (1), marker='^', transform=ax.get_xaxis_transform(), **arrow_fmt)
 
-    # --R E T A--
-    # Definindo como Vetor os pontos
-    xs = [0, 2, -3, -1.5]
-    ys = [0, 3, 1, -2.5]
-    colors = ['m', 'g', 'r', 'b']
-    ax.scatter(xs, ys, c=colors)
-    # LigarPontosComlinha
-    ax.plot([0, 2], [0, 3])
-    # Desenha a linha pontilha que conecta os pontos ao eixo
-    #for x, y, c in zip(xs, ys, colors):
-    #    ax.plot([x, x], [0, y], c=c, ls='--', lw=1.5, alpha=0.5)
-    #    ax.plot([0, x], [y, y], c=c, ls='--', lw=1.5, alpha=0.5)
-
-    #--C I R C U L O--
-    #https://acervolima.com/como-desenhar-um-circulo-usando-matplotlib-em-python/
-    #PrimeiraForma
-    #theta = np.arange(1, 2*np.pi, 0.01)
-    #r = np.sqrt(4)
-    #x = r*np.cos(theta)
-    #y = r * np.sin(theta)
-    #plt.plot(x,y)
-    #SegundaForma
-    circulo = plt.Circle((1, 1), 2)
-    ax.set_aspect(1)
-    ax.add_artist(circulo)
-
-    #--R E T A N G U L O--
-    #https://www.delftstack.com/pt/howto/matplotlib/how-to-draw-rectangle-on-image-in-matplotlib/
-    a = patches.Rectangle((1, 1), 1, 2, edgecolor="blue", facecolor="blue", fill=True)
-    ax.add_patch(a)
+    if sintOutput[0] == "circle":
+        draw_circle(ax, sintOutput)
+    elif sintOutput[0] == "square":
+        draw_square(ax, sintOutput)
+    elif sintOutput[0] == "rectangle":
+        draw_rectangle(ax, sintOutput)
+    elif sintOutput[0] == "connect":
+        connect_dots(ax,sintOutput)
 
     plt.show()
 
+def connect_dots(ax,sintOutput):
+    xs = []
+    ys = []
+    for dot in sintOutput:
+        if(dot == "connect"):
+            print("Conexão de pontos requisitada!\n")
+        else:
+            xs.append(dot[0])
+            ys.append(dot[1])
+
+    ax.scatter(xs, ys)
+
+    for xy in range(len(xs)-1):
+        ax.plot([xs[xy], xs[xy+1]], [ys[xy],ys[xy+1]], ls='--', lw=1.5, alpha=0.5)
+
+def draw_rectangle(ax,sintOutput):
+    b = patches.Rectangle((sintOutput[2][0], sintOutput[2][1]), sintOutput[1][1], sintOutput[1][0], edgecolor="blue",facecolor="blue", fill=True)
+    ax.add_patch(b)
+def draw_square(ax,sintOutput):
+    a = patches.Rectangle((sintOutput[2][0], sintOutput[2][1]), sintOutput[1], sintOutput[1], edgecolor="blue", facecolor="blue", fill=True)
+    ax.add_patch(a)
+
+def draw_circle(ax,sintOutput):
+    circulo = plt.Circle((sintOutput[2][0], sintOutput[2][1]), sintOutput[1], facecolor='red', fill=True)
+    ax.set_aspect(1)
+    ax.add_artist(circulo)
+
+
+##########################
 #--F R M  P R I N C I P A L--
 #frm = ttk.Window(themename='darkly')
 frm = ttk.Window(themename='journal')
