@@ -12,10 +12,14 @@ import A_sintatico as sint
 
 def ImprimeLexicoSintatico():
 
-    inputX = "draw square size = 10" #O conteudo escrito pelo usuario tem que vir pra essa variavel
+    #inputX = "draw square size = 10" #O conteudo escrito pelo usuario tem que vir pra essa variavel
+    inputX = entryString.get()
     lexi.set_input(inputX)
     lexi.tokenizer()
     lexOutput = lexi.get_lexOutput()
+    if lexOutput =="":
+        lexOutput = "Não foi possível analisar o input informado!\n"
+
 
     txtAnalisLexica.insert("end", lexOutput)
     txtSintatica.insert("end", 'TESTE AQUI 2 \nTESTE AQUI 2')
@@ -144,8 +148,8 @@ def PlanoCartesianoMatPlotLib():
     plt.show()
 
 #--F R M  P R I N C I P A L--
-frm = ttk.Window(themename='darkly')
-#frm = ttk.Window(themename='journal')
+#frm = ttk.Window(themename='darkly')
+frm = ttk.Window(themename='journal')
 frm.geometry('1000x600')
 frm.title("Interpretador")
 

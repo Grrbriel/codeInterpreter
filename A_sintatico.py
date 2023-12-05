@@ -111,10 +111,14 @@ def raw_input(p):
 # Error rule for syntax errors
 def p_error(p):
     print("Syntax error in input!")
+    error = True
+
 
 
 # Build the parser
 parser = yacc.yacc()
+
+error = False
 
 def sint(inputX):
     #while True:
@@ -125,6 +129,8 @@ def sint(inputX):
         print("FIM")
     result = parser.parse(s)
     print(result)
-
-    return result
+    if error is False:
+        return result
+    else:
+        return "Erro sintático no input!!!"
 
